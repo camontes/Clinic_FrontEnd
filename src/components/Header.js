@@ -14,7 +14,7 @@ class Header extends React.Component{
             return(
                 <>
                     <div className="left menu">
-                        <Link to="/shows/list" className="item">
+                        <Link to="#" className="item">
                             <strong>TVMAZE</strong>
                         </Link>
                     </div>

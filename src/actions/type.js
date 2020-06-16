@@ -8,5 +8,6 @@ export const DETAIL_USER = 'DETAIL_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
 
-//tvmaze
-export const FETCH_SHOWS = 'FETCH_SHOWS';
+//MedicalAppointments
+export const FETCH_MEDICALS= 'FETCH_MEDICALS';
+export const UNMOUNT_MEDICALS= 'UNMOUNT_MEDICALS';

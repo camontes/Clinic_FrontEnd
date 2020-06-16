@@ -44,7 +44,7 @@ export const createUser = (formValues) => async dispatch => {
     const response = await show.post('/Users',formValues)
     dispatch({type: CREATE_USER, payload:response.data})
 
-    history.push('/users/list');
+    history.push('/MedicalAppointmen/list');
 }
 
 export const deleteUser = (username) => async dispatch => {

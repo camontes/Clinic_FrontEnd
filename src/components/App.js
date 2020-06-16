@@ -6,7 +6,7 @@ import HeaderContainer from '../containers/HeaderContainer';
 import UserListPage from '../pages/Users/UserListPage';
 import UserCreatePage from '../pages/Users/UserCreatePage';
 import UserDetailPage from '../pages/Users/UserDetailPage';
-import TVmazeShowsPage from '../pages/tvmaze/TVmazeShowsPage';
+import MedicalAppointmentListPage from '../pages/MedicalAppointment/MedicalAppointmentListPage';
 
 
 const App = () =>{
@@ -21,7 +21,7 @@ const App = () =>{
                         <Route path="/users/list" exact component = {UserListPage}/>
                         <Route path="/users/create" exact component = {UserCreatePage}/>
                         <Route path="/users/detail/:username" exact component = {UserDetailPage}/>
-                        <Route path="/shows/list" exact component = {TVmazeShowsPage}/>
+                        <Route path="/MedicalAppointment/list" exact component = {MedicalAppointmentListPage}/>
                     </Switch>
                 </div>
             </Router>

@@ -5,7 +5,8 @@ import {store} from '../index'
 import {
     FETCH_MEDICALS,
     UNMOUNT_MEDICALS,
-    CREATE_MEDICAL_APPOINTMENT
+    CREATE_MEDICAL_APPOINTMENT,
+    ERROR_EXIST
 } from './type'
 
 export const fetchMedicals = () => async dispatch => {
@@ -30,7 +31,12 @@ export const createMedicalAppointment = (form) => async dispatch => {
         }
     }
     catch(error){
-        history.push("/Errors")
+        if(error.response.status === 409){
+            dispatch({type: ERROR_EXIST})
+        }
+        else{
+            history.push("/Errors")
+        }
     }
 }
 

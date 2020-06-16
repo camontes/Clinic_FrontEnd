@@ -3,7 +3,8 @@ import _ from 'lodash'
 import {
     FETCH_MEDICALS,
     UNMOUNT_MEDICALS,
-    CREATE_MEDICAL_APPOINTMENT
+    CREATE_MEDICAL_APPOINTMENT,
+    ERROR_EXIST
 } from '../actions/type'
 
 const initialState = {
@@ -25,7 +26,13 @@ export default  (state = initialState, action) => {
             case UNMOUNT_MEDICALS:
                 return {
                     ...state,
-                    loading:true
+                    loading:true,
+                    error: false
+                }
+            case ERROR_EXIST:
+                return {
+                    ...state,
+                    error:true
                 }
             case CREATE_MEDICAL_APPOINTMENT:
                 return {

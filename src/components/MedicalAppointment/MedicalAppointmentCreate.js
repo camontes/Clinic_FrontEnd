@@ -1,7 +1,5 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import DateTime from 'react-datetime'
-import { DateTimePicker } from 'react-widgets'
 
 class MedicalAppointmentCreate extends React.Component {
 
@@ -51,7 +49,6 @@ class MedicalAppointmentCreate extends React.Component {
     }
     
     onSubmit = (formValues)=>{
-        const dateNow = new Date();
         if(this.state.date == null){
             alert("The date is not valid")
         }

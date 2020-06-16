@@ -1,13 +1,33 @@
 import React from 'react'
 import MedicalAppointmentListContainer from '../../containers/MedicalAppointment/MedicalAppointmentListContainer'
+import MedicalAppointmentListAdminContainer from '../../containers/MedicalAppointment/MedicalAppointmentListAdminContainer'
+import {connect} from 'react-redux'
 
 class MedicalAppointmentListPage extends React.Component{
 
     render(){
-        return(
-            <MedicalAppointmentListContainer />
-        )
+        if(!this.props.user.currentUser){
+            return null;
+        }
+        if(this.props.user.currentUser.rolId == 1){
+            return(
+                <MedicalAppointmentListAdminContainer />
+            )
+        }
+        
+        if(this.props.user.currentUser.rolId == 2){
+            return(
+                <MedicalAppointmentListContainer />
+            )
+        }
     }
 }
 
-export default MedicalAppointmentListPage;
+const mapStateToProps = (state) => {
+    return ({ 
+        user:state.users
+    })
+    
+}
+
+export default connect(mapStateToProps,null)(MedicalAppointmentListPage);

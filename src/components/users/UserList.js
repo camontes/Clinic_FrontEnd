@@ -17,8 +17,7 @@ class UserList extends React.Component {
                         </div>
                         <div className ="col-lg-6 justify-content-end d-flex">
                             <Link to = {`/users/detail/${user.username}`} className="btn btn-secondary">See Detail</Link>
-                            <button className="btn btn-primary ml-2">Edit</button>
-                            <button className="btn btn-danger ml-2" onClick={()=>this.props.deleteUser(user.username)}>Eliminar</button>
+                            <button className="btn btn-danger ml-2" onClick={()=>this.props.deleteUser(user.username)}>Delete</button>
                         </div>
                    </div>
                    <hr></hr>

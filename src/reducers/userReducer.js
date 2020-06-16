@@ -56,7 +56,8 @@ export default  (state = initialState, action) => {
         case LOGOUT_USER:
             return {
                 ...state,
-                currentUser: null
+                currentUser: null,
+                data: {}
             };
         default:
             return state;

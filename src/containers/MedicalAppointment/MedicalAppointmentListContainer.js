@@ -11,10 +11,14 @@ class MedicalAppointmentListContainer extends React.Component{
     }
     render(){
         return(
-            <MedicalAppointments
-                medicals = {this.props.medicals}
-                loading = {this.props.loading}
-            />
+            <>
+                <div className = "container">
+                    <MedicalAppointments
+                        medicals = {this.props.medicals}
+                        loading = {this.props.loading}
+                    />
+                </div>
+            </>
         )
     }
 }

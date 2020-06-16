@@ -7,6 +7,7 @@ import UserListPage from '../pages/Users/UserListPage';
 import UserCreatePage from '../pages/Users/UserCreatePage';
 import UserDetailPage from '../pages/Users/UserDetailPage';
 import MedicalAppointmentListPage from '../pages/MedicalAppointment/MedicalAppointmentListPage';
+import Error from '../components/Error'
 
 
 const App = () =>{
@@ -22,6 +23,7 @@ const App = () =>{
                         <Route path="/users/create" exact component = {UserCreatePage}/>
                         <Route path="/users/detail/:username" exact component = {UserDetailPage}/>
                         <Route path="/MedicalAppointment/list" exact component = {MedicalAppointmentListPage}/>
+                        <Route path="/errors" exact component = {Error}/>
                     </Switch>
                 </div>
             </Router>

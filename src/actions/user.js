@@ -21,7 +21,7 @@ export const validateCredentials = formValues =>async (dispatch) =>{
     try{
         const response = await show.post(`/Users/ValidateCredentiales/${username}`,loginCommand)
         dispatch({type: VALIDATE_CREDENTIALS, payload:response.data})
-        history.push('/shows/list');
+        history.push('/MedicalAppointment/list');
     }
     catch(e){
         dispatch({type: ERROR_LOGIN})
@@ -44,7 +44,7 @@ export const createUser = (formValues) => async dispatch => {
     const response = await show.post('/Users',formValues)
     dispatch({type: CREATE_USER, payload:response.data})
 
-    history.push('/MedicalAppointmen/list');
+    history.push('/users/list');
 }
 
 export const deleteUser = (username) => async dispatch => {

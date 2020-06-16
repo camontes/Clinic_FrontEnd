@@ -6,7 +6,9 @@ import {
     FETCH_MEDICALS,
     UNMOUNT_MEDICALS,
     CREATE_MEDICAL_APPOINTMENT,
-    ERROR_EXIST
+    ERROR_EXIST,
+    CANCEL_MEDICAL_APPOINTMENT,
+    ERROR_CANCEL_MEDICAL_APPOINTMENT
 } from './type'
 
 export const fetchMedicals = () => async dispatch => {
@@ -43,4 +45,20 @@ export const createMedicalAppointment = (form) => async dispatch => {
 export const UnmountMedicals = () => async dispatch => {
 
     dispatch({type: UNMOUNT_MEDICALS})
+}
+
+export const deleteMedicalAppointment = (id) => async dispatch => {
+    
+    try{
+        await show.delete(`/MedicalAppointments/${id}`)
+        dispatch({type: CANCEL_MEDICAL_APPOINTMENT, payload:id})
+    }
+    catch(error){
+        if(error.response.status === 409){
+            dispatch({type: ERROR_CANCEL_MEDICAL_APPOINTMENT})
+        }
+        else{
+            history.push("/Errors")
+        }
+    }
 }

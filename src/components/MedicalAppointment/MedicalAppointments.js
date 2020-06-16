@@ -39,9 +39,9 @@ class MedicalAppointments extends React.Component{
                                 <div className="card-block">
                                     <h3 className="card-title">Description</h3>
                                     <p class="card-text">{medical.description}</p>
-                                    <h3>Date: <span className = "text-muted"><Moment format="YYYY/MM/DD">{medical.createdAt}</Moment></span></h3>
-                                    <h3>Type of medical appointment: <span className = "text-muted">{medical.typeMedicalAppointmentName}</span></h3>
-                                    <a href="#" className="btn btn-primary btn-lg btn-block">Cancel</a>
+                                    <h3>Date: <span className = "card-subtitle text-muted" style = {{fontSize: '15px'}}><Moment format="YYYY/MM/DD">{medical.createdAt}</Moment></span></h3>
+                                    <h3>Type of medical appointment: <span className = "card-subtitle text-muted" style = {{fontSize: '15px'}}>{medical.typeMedicalAppointmentName}</span></h3>
+                                    <button onClick = {() => this.props.onDeleteMedicalAppointment(medical.id)} className="btn btn-primary btn-lg btn-block">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -50,9 +50,21 @@ class MedicalAppointments extends React.Component{
             </div>
         )
     }
+
+    renderError = () =>{
+        const {errorCancel} = this.props;
+
+        if(errorCancel){
+            alert("no se puede eliminar")
+        }
+        return null;
+    }
     render(){
         return(
-            <div>{this.renderData()}</div>
+            <div>
+                {this.renderData()}
+                {this.renderError()}
+            </div>
         )
     }
 }

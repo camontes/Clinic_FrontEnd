@@ -47,6 +47,18 @@ class MedicalAppointmentCreate extends React.Component {
             </div>
         );
     }
+
+    renderErrorMessage = () =>{
+        const{errorMedical} = this.props;
+
+        if(errorMedical){
+            return(
+                <div class="alert alert-danger" role="alert">
+                    you cannot create more than one medical appointment for the same day
+                </div>
+            )
+        }
+    }
     
     onSubmit = (formValues)=>{
         if(this.state.date == null){
@@ -72,22 +84,25 @@ class MedicalAppointmentCreate extends React.Component {
         const {pristine, reset, submitting } = this.props
         
         return( 
-            <form onSubmit ={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-                <Field name="description" component={this.renderTextArea} label="Description" />
-                <label><b>Date</b></label>
-                <input onChange ={e => this.setState({date:  e.target.value})} value = {this.state.date} type="datetime-local" id="date" name="date" />
-                <Field name="typeMedicalAppointmentId" component={this.renderSelect} label="Type of appointment">
-                    <option>Select Type of appointment</option>
-                    <option value= {1}>Medicina General</option>
-                    <option value= {2}>Odontología</option>
-                    <option value={3}>Pediatría</option>
-                    <option value={4}>Neurología</option>
-                </Field>
-                <button type="submit" className ="btn btn-success mt-2" disabled={pristine || submitting}>
-                    Enter
-                </button>
-                <button type="button" className ="btn btn-primary mt-2 ml-3" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
-            </form>
+            <>
+                <form onSubmit ={this.props.handleSubmit(this.onSubmit)} className="ui form error">
+                    <Field name="description" component={this.renderTextArea} label="Description" />
+                    <label><b>Date</b></label>
+                    <input onChange ={e => this.setState({date:  e.target.value})} value = {this.state.date} type="datetime-local" id="date" name="date" />
+                    <Field name="typeMedicalAppointmentId" component={this.renderSelect} label="Type of appointment">
+                        <option>Select Type of appointment</option>
+                        <option value= {1}>Medicina General</option>
+                        <option value= {2}>Odontología</option>
+                        <option value={3}>Pediatría</option>
+                        <option value={4}>Neurología</option>
+                    </Field>
+                    <button type="submit" className ="btn btn-success mt-2" disabled={pristine || submitting}>
+                        Enter
+                    </button>
+                    <button type="button" className ="btn btn-primary mt-2 ml-3" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+                </form>
+                {this.renderErrorMessage()}
+            </>
         );
     }
 

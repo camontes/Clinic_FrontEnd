@@ -10,7 +10,7 @@ import reducers from './reducers'
 import 'bootstrap/dist/css/bootstrap.css';
 
 const composeEnhacers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
+export const store = createStore(
     reducers,
     composeEnhacers(applyMiddleware(reduxThunk))
     );

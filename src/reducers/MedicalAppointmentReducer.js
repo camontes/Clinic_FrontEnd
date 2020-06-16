@@ -2,7 +2,8 @@ import _ from 'lodash'
 
 import {
     FETCH_MEDICALS,
-    UNMOUNT_MEDICALS
+    UNMOUNT_MEDICALS,
+    CREATE_MEDICAL_APPOINTMENT
 } from '../actions/type'
 
 const initialState = {
@@ -21,11 +22,16 @@ export default  (state = initialState, action) => {
                 data:{...state.data,..._.mapKeys(action.payload,'id')},
                 loading: false
                 }
-                case UNMOUNT_MEDICALS:
-                    return {
-                        ...state,
-                        loading:true
-                    }
+            case UNMOUNT_MEDICALS:
+                return {
+                    ...state,
+                    loading:true
+                }
+            case CREATE_MEDICAL_APPOINTMENT:
+                return {
+                    ...state,
+                    data:{...state.data, [action.payload.id]:action.payload}
+                }
         default:
             return state;
     }

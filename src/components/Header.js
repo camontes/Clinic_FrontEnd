@@ -13,21 +13,25 @@ class Header extends React.Component{
 
             return(
                 <>
-                    <div className="left menu">
-                        <Link to="#" className="item">
-                            <strong>TVMAZE</strong>
+                    <div className="right menu">
+                        <Link to = "/MedicalAppointment/list" className="item">
+                            Medical Appointments
                         </Link>
                     </div>
                     {currentUser.rolId == 1 &&
                         <>
                             <div className="right menu">
-                                <Link to = "/MedicalAppointment/list" className="item">
-                                    Medical Appointments
-                                </Link>
-                            </div>
-                            <div className="right menu">
                                 <Link to = "/users/list" className="item">
                                     Manage Users
+                                </Link>
+                            </div>
+                        </>
+                    }
+                    {currentUser.rolId == 2 &&
+                        <>
+                            <div className="right menu">
+                                <Link to = "/MedicalAppointment/create" className="item">
+                                    Create Medical Appointment
                                 </Link>
                             </div>
                         </>

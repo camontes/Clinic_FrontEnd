@@ -96,12 +96,12 @@ class MedicalAppointmentCreate extends React.Component {
                         <option value={3}>Pediatría</option>
                         <option value={4}>Neurología</option>
                     </Field>
+                    {this.renderErrorMessage()}
                     <button type="submit" className ="btn btn-success mt-2" disabled={pristine || submitting}>
                         Enter
                     </button>
                     <button type="button" className ="btn btn-primary mt-2 ml-3" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
                 </form>
-                {this.renderErrorMessage()}
             </>
         );
     }

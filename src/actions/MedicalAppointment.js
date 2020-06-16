@@ -24,8 +24,9 @@ export const createMedicalAppointment = (form) => async dispatch => {
             history.push("/Errors")
         }
         else{
-            const response = await show.post('/MedicalAppointments', {...form, username: user})
+            const response = await show.post('/MedicalAppointments', {...form, username: user.username})
             dispatch({type: CREATE_MEDICAL_APPOINTMENT, payload:response.data})
+            history.push("/MedicalAppointment/list")
         }
     }
     catch(error){

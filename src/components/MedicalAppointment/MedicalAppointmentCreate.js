@@ -36,12 +36,28 @@ class MedicalAppointmentCreate extends React.Component {
             </div>
         );
     }
+
+    renderSelect= ({input, label, meta, type, placeholder, children})=> {
+        const className =`field ${meta.error && meta.touched ? 'error': ''}`
+        return (
+            <div className={className}>
+                <label>{label}</label>
+                <select  {...input}  >
+                    {children}
+               </select>
+                {this.renderError(meta)}
+            </div>
+        );
+    }
     
     onSubmit = (formValues)=>{
-        if(this.state.date == null || this.state.date < new DateTime){
+        const dateNow = new Date();
+        if(this.state.date == null){
             alert("The date is not valid")
         }
-        //this.props.onSubmit(formValues);
+        else{
+            this.props.onSubmit({...formValues, createdAt : this.state.date});
+        }
     }
 
     renderTextArea = ({input, label, meta})=> {
@@ -61,8 +77,15 @@ class MedicalAppointmentCreate extends React.Component {
         return( 
             <form onSubmit ={this.props.handleSubmit(this.onSubmit)} className="ui form error">
                 <Field name="description" component={this.renderTextArea} label="Description" />
-                <label>Date</label>
-                <input onChange ={e => this.setState({date:  e.target.value})} value = {this.state.date} type="datetime-local" id="birthdaytime" name="birthdaytime" />
+                <label><b>Date</b></label>
+                <input onChange ={e => this.setState({date:  e.target.value})} value = {this.state.date} type="datetime-local" id="date" name="date" />
+                <Field name="typeMedicalAppointmentId" component={this.renderSelect} label="Type of appointment">
+                    <option>Select Type of appointment</option>
+                    <option value= {1}>Medicina General</option>
+                    <option value= {2}>Odontología</option>
+                    <option value={3}>Pediatría</option>
+                    <option value={4}>Neurología</option>
+                </Field>
                 <button type="submit" className ="btn btn-success mt-2" disabled={pristine || submitting}>
                     Enter
                 </button>
@@ -78,6 +101,9 @@ const validate = (formValues) => {
     const errors ={};
     if (!formValues.description){
         errors.description = 'you must enter a description'
+    }
+    if(!formValues.typeMedicalAppointmentId){
+        errors.typeMedicalAppointmentId = 'you must select type of appointment'
     }
     return errors;
 }

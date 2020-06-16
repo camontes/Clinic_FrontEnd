@@ -13,10 +13,18 @@ class MedicalAppointmentCreateContainer extends React.Component{
     }
     render(){
         return(
-            <MedicalAppointmentCreate
-                onSubmit = {this.onSubmit}
-                errorMedical = {this.props.errorMedical}
-            />
+            <>
+                <div className ="container">
+                    <div className = "row justify-content-around">
+                            <div className ="col-6">
+                                <MedicalAppointmentCreate
+                                    onSubmit = {this.onSubmit}
+                                    errorMedical = {this.props.errorMedical}
+                                />
+                            </div>
+                    </div>
+                </div>
+            </>
         )
     }
 }

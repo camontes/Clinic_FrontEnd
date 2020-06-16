@@ -10,10 +10,12 @@ class MedicalAppointmentListAdminContainer extends React.Component{
     }
     render(){
         return(
-            <MedicalAppointmentsAdmin
-                medicals = {this.props.medicals}
-                loading = {this.props.loading}
-            />
+            <div className = "container">
+                <MedicalAppointmentsAdmin
+                    medicals = {this.props.medicals}
+                    loading = {this.props.loading}
+                />
+            </div>
         )
     }
 }

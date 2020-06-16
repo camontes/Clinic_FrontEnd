@@ -30,15 +30,24 @@ class MedicalAppointmentsAdmin extends React.Component{
             )
           }
         return(
-            <div className="row">
+            <div className="row mt-3">
                 {medicals.map(medical =>
                     <>
-                        <h1>{medical.description}</h1>
-                        <p>{medical.username}</p>
-                        <p><Moment format="YYYY/MM/DD">{medical.createdAt}</Moment></p>
+                        <div className="col-6 mb-3">
+                            <div className = "card">
+                                <img src="/medical.jpg" class="card-img-top img-fluid" alt="Medical" />
+                                <div className="card-block">
+                                    <h3 className="card-title">Description</h3>
+                                    <p class="card-text">{medical.description}</p>
+                                    <h3>Date: <span className = "card-subtitle text-muted" style = {{fontSize: '15px'}}><Moment format="YYYY/MM/DD">{medical.createdAt}</Moment></span></h3>
+                                    <h3>Type of medical appointment: <span className = "card-subtitle text-muted" style = {{fontSize: '15px'}}>{medical.typeMedicalAppointmentName}</span></h3>
+                                    <h3>Pacient: <span className = "card-subtitle text-muted" style = {{fontSize: '15px'}}>{medical.username}</span></h3>
+                                </div>
+                            </div>
+                        </div>
                     </>
                 )}
-          </div>
+            </div>
         )
     }
     render(){

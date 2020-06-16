@@ -30,7 +30,8 @@ export default  (state = initialState, action) => {
                 return {
                     ...state,
                     loading:true,
-                    error: false
+                    error: false,
+                    errorCancelMedicalAppointment: false
                 }
             case ERROR_EXIST:
                 return {

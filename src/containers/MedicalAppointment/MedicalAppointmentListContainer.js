@@ -10,6 +10,9 @@ class MedicalAppointmentListContainer extends React.Component{
         this.props.fetchMedicals();
     }
 
+    componentWillUnmount(){
+        this.props.UnmountMedicals();
+    }
     onDeleteMedicalAppointment = (id) =>{
         this.props.deleteMedicalAppointment(id);
     }

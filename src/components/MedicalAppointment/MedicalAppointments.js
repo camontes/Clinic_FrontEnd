@@ -55,7 +55,7 @@ class MedicalAppointments extends React.Component{
         const {errorCancel} = this.props;
 
         if(errorCancel){
-            alert("no se puede eliminar")
+            alert("You cannot cancel this appointment")
         }
         return null;
     }

@@ -4,7 +4,11 @@ class Error extends React.Component{
 
     render(){
         return(
-            <h1>There was a mistake</h1>
+            <div className = "container">
+                <div class="alert alert-danger" role="alert">
+                    Something went wrong
+                </div>
+            </div>
         )
     }
 }
